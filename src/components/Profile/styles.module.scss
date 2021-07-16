@@ -1,0 +1,28 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	border: 1px solid rgba(0, 71, 187, 0.2);
+	border-radius: 120px;
+
+	margin-bottom: 32px;
+	padding: 4px;
+
+	.userProfileImage {
+		width: 32px;
+		height: 32px;
+	}
+
+	span {
+		font-size: 1rem;
+		line-height: 20px;
+		letter-spacing: -0.5%;
+
+		color: var(--primary);
+	}
+
+	.arrowDown {
+		margin-right: 10px;
+	}
+}

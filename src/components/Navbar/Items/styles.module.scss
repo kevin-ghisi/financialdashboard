@@ -1,0 +1,28 @@
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+	.item {
+		position: relative;
+		padding: 9px;
+
+		img {
+			margin: auto;
+			width: 32px;
+			height: 32px;
+			display: block;
+		}
+	}
+
+	.selected {
+		width: 4px;
+		height: 48px;
+		background-color: var(--danger);
+		position: absolute;
+		top: 0;
+		left: -23px;
+		border-radius: 0px 12px 12px 0px;
+	}
+}

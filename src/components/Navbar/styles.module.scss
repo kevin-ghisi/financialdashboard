@@ -1,0 +1,18 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-start;
+
+	max-width: 96px;
+	height: 100vh;
+
+	padding: 20px 25px;
+
+	background-color: var(--white);
+
+	img {
+		margin-bottom: 46px;
+	}
+}
