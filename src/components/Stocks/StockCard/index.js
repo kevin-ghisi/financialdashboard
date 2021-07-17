@@ -6,9 +6,7 @@ export function StockCard() {
   return (
     <div className={styles.wrapper}>
         <div className={styles.card}>
-            <a href="#" className={styles.favorite}>
-                <img src="/icons/star.svg" alt="star icon"/>    
-            </a>
+            <img src="/icons/star.svg" alt="star icon"className={styles.favorite}/>
             <img src="/twitter.svg" alt="Twitter" className={styles.stockLogo}/>
             <div className={styles.stockNameContainer}>
                 <span className={styles.stockLabel}>TWTR</span>

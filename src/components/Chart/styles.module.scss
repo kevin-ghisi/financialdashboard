@@ -1,0 +1,25 @@
+.tooltip {
+	padding: 3px 12px;
+
+	background-color: var(--primary);
+
+	box-shadow: 0px 4px 8px rgba(42, 22, 104, 0.15);
+	border-radius: 4px;
+
+	span {
+		font-size: 0.875rem;
+		line-height: 19.6px;
+
+		color: var(--white);
+	}
+}
+.arrowDown {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+
+	border-top: 5px solid #0047bb;
+
+	margin: auto;
+}

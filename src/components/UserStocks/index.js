@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Profile } from '../Profile';
-import { FavoriteStockCard } from '../FavoriteStockCard';
+import { FavoriteStockCard } from '../Stocks/FavoriteStockCard';
 
 import styles from './styles.module.scss'
 
