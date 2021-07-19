@@ -1,19 +1,23 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
+
 import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-const data = [{name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 1}, {name: 'Page A', uv: 15}];
 
 import styles from './styles.module.scss'
 
 export function Chart() {
 
+    const chartData = useSelector(state => state.graphData);
+    // const chartData = [{name:"A", b: 1}]
+
     const CustomTooltip = (props) => {
-        const { payload, cy, cx, active } = props;
+        const { payload, active } = props;
 
         if (active) {
             return (
                 <div>
                     <div className={styles.tooltip}>
-                        <span className="label">{`$${payload[0].value}`}</span>
+                        {/* <span className="label">{`$${payload[0].value}`}</span> */}
                     </div>
                     <div className={styles.arrowDown}></div>
                 </div>
@@ -45,20 +49,20 @@ export function Chart() {
     };
 
     return (
-        <ResponsiveContainer width="95%" height={274}>
-            <AreaChart width={708} height={274} data={data}
+        <ResponsiveContainer width="100%" height={274}>
+            <AreaChart width={708} height={274} data={chartData}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <defs>
-                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#0047BB" stopOpacity={0.36}/>
-                    <stop offset="70%" stopColor="#0047BB" stopOpacity={0}/>
+                    <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#0047BB" stopOpacity={0.26}/>
+                    <stop offset="95%" stopColor="#0047BB" stopOpacity={0.01}/>
                     </linearGradient>
                 </defs>
                 <XAxis tick={{stroke: 'red'}} stroke="#F5F8FA" dataKey="name" />
                 <YAxis tick={{stroke: 'red'}} stroke="#F5F8FA"/>
                 <CartesianGrid stroke="#F5F8FA"/>
                 <Tooltip wrapperStyle={{ top: -26, left: -29 }} content={CustomTooltip} cursor={{ stroke: '#F5F8FA'}}/>
-                <Area type="monotone" dataKey="uv" stroke="#0047BB" dot={CustomizedDot} activeDot={CustomizedActiveDot} fillOpacity={1} fill="url(#colorUv)" />
+                <Area type="monotone" dataKey="value" stroke="#0047BB" dot={CustomizedDot} activeDot={CustomizedActiveDot} fillOpacity={1} fill="url(#colorValue)" />
             </AreaChart>
         </ResponsiveContainer>
     );
