@@ -9,9 +9,20 @@ const getStockLogo = stock => {
     return api.get(`/stock/${stock}/logo`, {params:{token: 'pk_9de12f51c43746bd95b4a270e2cba910'}});
 };
 
+const getChartData = stock => {
+    return api.get(`/stock/${stock}/chart/dynamic`, 
+        {
+            params: {
+                token: 'pk_9de12f51c43746bd95b4a270e2cba910',
+                chartInterval: 30
+            }   
+        });
+};
+
 const callServices = {
     getStockData,
-    getStockLogo
+    getStockLogo,
+    getChartData
 };
 
 export default callServices;

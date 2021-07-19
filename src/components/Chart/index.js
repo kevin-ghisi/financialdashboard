@@ -3,35 +3,33 @@ import {useSelector} from 'react-redux';
 
 import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
+import ReactTooltip from 'react-tooltip';   
+
 import styles from './styles.module.scss'
 
 export function Chart() {
 
-    const chartData = useSelector(state => state.graphData);
-    // const chartData = [{name:"A", b: 1}]
+    const chartData = useSelector(state => state.chartData);
 
-    const CustomTooltip = (props) => {
-        const { payload, active } = props;
-
-        if (active) {
-            return (
-                <div>
-                    <div className={styles.tooltip}>
-                        {/* <span className="label">{`$${payload[0].value}`}</span> */}
-                    </div>
-                    <div className={styles.arrowDown}></div>
-                </div>
-                
-            );
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+          return (
+            <div className={styles.wrapper}>
+                 <div className={styles.tooltip}>
+                     <span className="label">{`$${payload[0].value}`}</span>
+                 </div>
+                 <div className={styles.arrowDown}></div>
+             </div>
+          );
         }
-      
+
         return null;
-    }
+      };
 
 
     const CustomizedDot = (props) => {
         const { cx, cy, stroke } = props;
-      
+
         return (
             <circle cx={cx} cy={cy} r={2.5} stroke={stroke} strokeWidth={3} fill="#0047BB" />
         );
@@ -39,7 +37,7 @@ export function Chart() {
 
     const CustomizedActiveDot = (props) => {
         const { cx, cy } = props;
-      
+
         return (
             <>
                 <circle cx={cx} cy={cy} r={9.5} stroke="#0047BB" strokeWidth={2} fill="#FFF" />
@@ -58,11 +56,12 @@ export function Chart() {
                     <stop offset="95%" stopColor="#0047BB" stopOpacity={0.01}/>
                     </linearGradient>
                 </defs>
-                <XAxis tick={{stroke: 'red'}} stroke="#F5F8FA" dataKey="name" />
-                <YAxis tick={{stroke: 'red'}} stroke="#F5F8FA"/>
+                <XAxis tick={{stroke: '#657786'}} stroke="#F5F8FA" dataKey="minute" unit="h"/>
+                <YAxis tick={{stroke: '#657786'}} stroke="#F5F8FA" unit="$"/>
                 <CartesianGrid stroke="#F5F8FA"/>
-                <Tooltip wrapperStyle={{ top: -26, left: -29 }} content={CustomTooltip} cursor={{ stroke: '#F5F8FA'}}/>
-                <Area type="monotone" dataKey="value" stroke="#0047BB" dot={CustomizedDot} activeDot={CustomizedActiveDot} fillOpacity={1} fill="url(#colorValue)" />
+                <Tooltip content={CustomTooltip} cursor={{ stroke: '#F5F8FA'}} coordinate={{x: 0, y: 150}}/>
+                {/* <Tooltip/> */}
+                <Area type="monotone" dataKey="open" stroke="#0047BB" dot={CustomizedDot} activeDot={CustomizedActiveDot} fillOpacity={1} fill="url(#colorValue)" data-tip data-for="tooltip"/>
             </AreaChart>
         </ResponsiveContainer>
     );

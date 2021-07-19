@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Profile } from '../Profile';
 import { FavoriteStockCard } from '../Stocks/FavoriteStockCard';
@@ -6,19 +7,22 @@ import { FavoriteStockCard } from '../Stocks/FavoriteStockCard';
 import styles from './styles.module.scss'
 
 export function UserStocks() {
-  return (
-    <div className={styles.wrapper}>
+    const favoriteStocks = useSelector(state => state.favoriteStocks);
 
-        <Profile />
+    return (
+        <div className={styles.wrapper}>
 
-        <div className={styles.title}>
-          <img src="/icons/star-filled.svg" alt="Filled Star" />
-          <h2>Empresas Favoritas</h2>
+            <Profile />
+
+            <div className={styles.title}>
+            <img src="/icons/star-filled.svg" alt="Filled Star" />
+            <h2>Empresas Favoritas</h2>
+            </div>
+            {favoriteStocks.map((stock) => {
+                return (
+                    <FavoriteStockCard data={stock}/>
+                )
+            })}
         </div>
-
-        <FavoriteStockCard />
-        <FavoriteStockCard />
-        <FavoriteStockCard />
-    </div>
-  );
+    );
 }

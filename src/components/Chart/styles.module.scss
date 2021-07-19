@@ -1,25 +1,29 @@
-.tooltip {
-	padding: 3px 12px;
+.wrapper {
+	// transform: translate(-50%, -150%);
 
-	background-color: var(--primary);
+	.tooltip {
+		padding: 3px 12px;
 
-	box-shadow: 0px 4px 8px rgba(42, 22, 104, 0.15);
-	border-radius: 4px;
+		background-color: var(--primary);
 
-	span {
-		font-size: 0.875rem;
-		line-height: 19.6px;
+		box-shadow: 0px 4px 8px rgba(42, 22, 104, 0.15);
+		border-radius: 4px;
 
-		color: var(--white);
+		span {
+			font-size: 0.875rem;
+			line-height: 19.6px;
+
+			color: var(--white);
+		}
 	}
-}
-.arrowDown {
-	width: 0;
-	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
+	.arrowDown {
+		width: 0;
+		height: 0;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
 
-	border-top: 5px solid #0047bb;
+		border-top: 5px solid #0047bb;
 
-	margin: auto;
+		margin: auto;
+	}
 }
