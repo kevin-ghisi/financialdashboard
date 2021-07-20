@@ -19,8 +19,9 @@ export function UserStocks() {
             <h2>Empresas Favoritas</h2>
             </div>
             {favoriteStocks.map((stock) => {
+                console.log("UserStocks", stock)
                 return (
-                    <FavoriteStockCard data={stock}/>
+                    <FavoriteStockCard data={stock} key={stock.payload.symbol}/>
                 )
             })}
         </div>

@@ -48,24 +48,24 @@ function mainReducer(state = initialState, action) {
                     ...state.favoriteStocks,
                     {
                         payload,
-                        logo: state.logo,
+                        ...state.logo,
                         isPositive: state.isChangePositive
                     }
                 ]
             }
 
         case ADD_RECENT_STOCK:
-        return {
-            ...state,
-            recentStocks: [
-                ...state.recentStocks,
-                {
-                    stock: state.stockData[0],
-                    logo: state.logo,
-                    isPositive: state.isChangePositive
-                }
-            ]
-        }
+            return {
+                ...state,
+                recentStocks: [
+                    ...state.recentStocks,
+                    {
+                        ...state.stockData[0],
+                        ...state.logo,
+                        isPositive: state.isChangePositive
+                    }
+                ]
+            }
 
         default:
             return state;

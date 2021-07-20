@@ -20,7 +20,7 @@ export function Favorite({data}) {
             <div className={styles.wrapper} data-tip >
                 <img src="/icons/star.svg" alt="star icon"className={styles.favorite} onClick={() => setFavorite(data)}/>
             </div>
-            <ReactTooltip place="top" type="dark" effect="solid" textColor='#FFF' backgroundColor='#0047bb' className={styles.tooltip}>
+            <ReactTooltip place="top" type="dark" effect="solid" className={styles.tooltip}>
                 Adicionar aos favoritos!
             </ReactTooltip>
         </>

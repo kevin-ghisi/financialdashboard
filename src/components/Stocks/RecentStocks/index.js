@@ -31,8 +31,7 @@ export function RecentStocks() {
                     <div className={styles.row__inner}>
                         {recentStocks.map((stock) => {
                             return (
-                                <div className={styles.tile}>
-                                    {console.log("recent stock", stock)}
+                                <div className={styles.tile} key={stock.companyName}>
                                     <StockCard data={stock}/>
                                 </div>
                             )

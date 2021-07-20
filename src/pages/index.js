@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+
+import {useSelector} from 'react-redux';
 
 import Head from 'next/head';
 
-import { api } from '../services/api'
+import {formatNumber} from '../redux/actions/calls'
 
 import { SearchBar } from '../components/SearchBar'
 import { Chart } from '../components/Chart'
@@ -16,7 +16,9 @@ export default function Home({  }) {
     const stockData = useSelector(state => state.stockData);
     const isPositiveChange = useSelector(state => state.isChangePositive)
 
-    const formatedPercent = stockData[0].changePercent.toFixed(2);
+    const formatedChange = formatNumber(stockData[0].change);
+    const formatedPercent = formatNumber(stockData[0].changePercent);
+    const formatedValue = formatNumber(stockData[0].latestPrice);
 
 	return (
             <div className={styles.wrapper}>
@@ -29,7 +31,7 @@ export default function Home({  }) {
                     <h1>Dashboard</h1>
                 </div>
 
-                <SearchBar />
+                <SearchBar data={stockData[0]}/>
 
                 <div className={styles.chartWrapper}>
                     <div className={styles.card}>
@@ -41,10 +43,10 @@ export default function Home({  }) {
                         <div className={styles.stockVariation}>
                             <div className={styles.price}>
                                 <img src={`${isPositiveChange ? '/icons/graph-up.svg' : '/icons/graph-down.svg'}`} alt="Graphic down" />
-                                <span>${stockData[0].latestPrice}</span>
+                                <span>${formatedValue}</span>
                             </div>
                             <div className={styles.percentage}>
-                                <span className={`${isPositiveChange ? styles.positive : styles.negative}`}>${stockData[0].change} ({formatedPercent}%)</span>
+                                <span className={`${isPositiveChange ? styles.positive : styles.negative}`}>${formatedChange} ({formatedPercent}%)</span>
                             </div>
                             
                         </div>

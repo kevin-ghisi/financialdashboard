@@ -66,3 +66,13 @@ export const addRecent = (stock) => (dispatch) => {
         payload: stock,
     });
 };
+
+export function formatNumber(value) {
+    const number = value.toFixed(2);
+    return number;
+}
+
+export function formatName(name) {
+    const text = name.replace(/ .*/, '');
+    return text;
+}

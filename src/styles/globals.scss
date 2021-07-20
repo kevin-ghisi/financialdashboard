@@ -70,3 +70,11 @@ button {
 input:focus-visible {
 	outline: none;
 }
+
+.positive {
+	color: var(--success);
+}
+
+.negative {
+	color: var(--danger);
+}
