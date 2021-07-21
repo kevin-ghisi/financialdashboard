@@ -1,6 +1,5 @@
 export const GET_STOCK_DATA = "GET_STOCK_DATA";
 export const SET_CHANGE = "SET_CHANGE";
-export const GET_STOCK_LOGO = "GET_STOCK_LOGO";
 export const GET_STOCK_CHART = "GET_STOCK_CHART";
 export const ADD_RECENT_STOCK = "ADD_RECENT_STOCK";
 export const ADD_FAVORITE_STOCK = "ADD_FAVORITE_STOCK";

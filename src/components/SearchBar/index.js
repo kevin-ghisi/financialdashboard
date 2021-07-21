@@ -10,17 +10,14 @@ export function SearchBar({data}) {
 
     const [stock, setStock] = useState(null);
 
-    function getData(data) {
+    function getData() {
         dispatch(getStock(stock));
-        dispatch(getLogo(stock));
-        dispatch(getChart(stock));
-        setTimeout(() => dispatch(addRecent(data)), 1500)
         
     }
     return (
         <div className={styles.wrapper}>
             <input type="text" name="stock" id="stock" placeholder="Buscar Empresa" onChange={(evt) => setStock(evt.target.value)}/>
-            <a href="#" onClick={() => getData(data)}>
+            <a href="#" onClick={() => getData()}>
                 <img src="/icons/search.svg" alt="Search icon" className={styles.icon}/>
             </a>
         </div>

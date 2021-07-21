@@ -1,4 +1,4 @@
-import { GET_STOCK_CHART, GET_STOCK_DATA, GET_STOCK_LOGO, SET_CHANGE, ADD_FAVORITE_STOCK, ADD_RECENT_STOCK } from './types'
+import { GET_STOCK_CHART, GET_STOCK_DATA, GET_STOCK_LOGO, SET_CHANGE, ADD_FAVORITE_STOCK, ADD_RECENT_STOCK, REMOVE_FAVORITE_STOCK } from './types'
 
 import callServices from "../../services/callServices"
 
@@ -22,25 +22,16 @@ export const getStock = (stock) => async (dispatch) => {
             type: GET_STOCK_DATA,
             payload: res.data,
         });
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-export const getLogo = (stock) => async (dispatch) => {
-    try {
-        const res = await callServices.getStockLogo(stock);
 
         dispatch({
-            type: GET_STOCK_LOGO,
+            type: ADD_RECENT_STOCK,
             payload: res.data,
         });
     } catch (err) {
+        alert("Código de ação ("+stock+") não encontrado!");
         console.log(err);
     }
-};
 
-export const getChart = (stock) => async (dispatch) => {
     try {
         const res = await callServices.getChartData(stock);
 
@@ -53,6 +44,32 @@ export const getChart = (stock) => async (dispatch) => {
     }
 };
 
+// export const getLogo = (stock) => async (dispatch) => {
+//     try {
+//         const res = await callServices.getStockLogo(stock);
+
+//         dispatch({
+//             type: GET_STOCK_LOGO,
+//             payload: res.data,
+//         });
+//     } catch (err) {
+//         console.log(err);
+//     }
+// };
+
+// export const getChart = (stock) => async (dispatch) => {
+//     try {
+//         const res = await callServices.getChartData(stock);
+
+//         dispatch({
+//             type: GET_STOCK_CHART,
+//             payload: res.data,
+//         });
+//     } catch (err) {
+//         console.log(err);
+//     }
+// };
+
 export const addFavorite = (stock) => (dispatch) => {
     dispatch({
         type: ADD_FAVORITE_STOCK,
@@ -60,12 +77,19 @@ export const addFavorite = (stock) => (dispatch) => {
     });
 };
 
-export const addRecent = (stock) => (dispatch) => {
+export const removeFavorite = (id) => (dispatch) => {
     dispatch({
-        type: ADD_RECENT_STOCK,
-        payload: stock,
+        type: REMOVE_FAVORITE_STOCK,
+        payload: id,
     });
 };
+
+// export const addRecent = (stock) => (dispatch) => {
+//     dispatch({
+//         type: ADD_RECENT_STOCK,
+//         payload: stock,
+//     });
+// };
 
 export function formatNumber(value) {
     const number = value.toFixed(2);

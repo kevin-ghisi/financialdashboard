@@ -8,8 +8,8 @@ const initialState = {
         "url": "https://storage.googleapis.com/iex/api/logos/AAPL.png"
     },
     stockData: [{
-        "symbol": "---",
-        "companyName": "---",
+        "symbol": "",
+        "companyName": "",
         "primaryExchange": "NEW YORK STOCK EXCHANGE, INC.",
         "calculationPrice": "close",
         "open": 28.81,

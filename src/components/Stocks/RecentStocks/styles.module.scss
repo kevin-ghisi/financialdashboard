@@ -24,38 +24,60 @@
 		}
 	}
 
-	.stocks {
-		width: 100%;
+	// .stocks {
+	// 	width: 100%;
 
-		.row {
-			overflow-x: scroll;
-			width: 750px;
+	// 	.row {
+	// 		overflow-x: scroll;
+	// 		width: 750px;
 
-			scrollbar-width: none; /* Firefox */
-			-ms-overflow-style: none; /* Internet Explorer 10+ */
+	// 		scrollbar-width: none; /* Firefox */
+	// 		-ms-overflow-style: none; /* Internet Explorer 10+ */
 
-			.row__inner {
-				transition: 450ms transform;
-				font-size: 0;
-				white-space: nowrap;
+	// 		.row__inner {
+	// 			transition: 450ms transform;
+	// 			font-size: 0;
+	// 			white-space: nowrap;
 
-				.tile {
-					position: relative;
-					display: inline-block;
-					width: 299px;
-					margin-right: 21px;
-					font-size: 20px;
-					cursor: pointer;
-					transition: 450ms all;
-					transform-origin: center left;
-				}
+	// 			.tile {
+	// 				position: relative;
+	// 				display: inline-block;
+	// 				width: 299px;
+	// 				margin-right: 21px;
+	// 				font-size: 20px;
+	// 				cursor: pointer;
+	// 				transition: 450ms all;
+	// 				transform-origin: center left;
+	// 			}
+	// 		}
+	// 	}
+
+	// 	.row::-webkit-scrollbar {
+	// 		/* WebKit */
+	// 		width: 0;
+	// 		height: 0;
+	// 	}
+	// }
+
+	.recentContainer {
+		display: flex;
+		align-items: center;
+		max-width: 761px;
+		overflow-y: auto;
+
+		margin: auto;
+
+		.itemContainer {
+			display: flex;
+			overflow-y: hidden;
+			justify-content: center;
+
+			.tile {
+				margin-right: 21px;
 			}
 		}
-
-		.row::-webkit-scrollbar {
-			/* WebKit */
-			width: 0;
-			height: 0;
+		.itemContainer::-webkit-scrollbar {
+			display: none;
 		}
 	}
 }

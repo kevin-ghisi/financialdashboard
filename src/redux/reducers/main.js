@@ -1,9 +1,6 @@
-import { GET_STOCK_CHART, GET_STOCK_DATA, GET_STOCK_LOGO, SET_CHANGE, ADD_RECENT_STOCK, ADD_FAVORITE_STOCK, REMOVE_FAVORITE_STOCK } from '../actions/types'
+import { GET_STOCK_CHART, GET_STOCK_DATA, SET_CHANGE, ADD_RECENT_STOCK, ADD_FAVORITE_STOCK, REMOVE_FAVORITE_STOCK } from '../actions/types'
 
 const initialState = {
-    logo: {
-        
-    },
     stockData: {
 
     },
@@ -28,12 +25,6 @@ function mainReducer(state = initialState, action) {
                 ...state,
                 isChangePositive: payload,
             }
-  
-        case GET_STOCK_LOGO:
-            return {
-                ...state,
-                logo: payload,
-            }
 
         case GET_STOCK_CHART:
             return {
@@ -47,11 +38,19 @@ function mainReducer(state = initialState, action) {
                 favoriteStocks: [
                     ...state.favoriteStocks,
                     {
+                        id: Math.random(),
                         payload,
-                        ...state.logo,
                         isPositive: state.isChangePositive
                     }
                 ]
+            }
+
+        case REMOVE_FAVORITE_STOCK:
+            const newFavorites = state.favoriteStocks.filter(a => a.id !== payload)
+            // "Mutate" the existing state to save the new array
+            return {
+                ...state,
+                favoriteStocks: newFavorites
             }
 
         case ADD_RECENT_STOCK:
@@ -60,8 +59,8 @@ function mainReducer(state = initialState, action) {
                 recentStocks: [
                     ...state.recentStocks,
                     {
+                        id: Math.random(),
                         ...state.stockData[0],
-                        ...state.logo,
                         isPositive: state.isChangePositive
                     }
                 ]

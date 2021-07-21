@@ -6,6 +6,7 @@ import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContai
 import ReactTooltip from 'react-tooltip';   
 
 import styles from './styles.module.scss'
+import { formatNumber } from '../../redux/actions/calls';
 
 export function Chart() {
 
@@ -13,14 +14,14 @@ export function Chart() {
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
-          return (
-            <div className={styles.wrapper}>
-                 <div className={styles.tooltip}>
-                     <span className="label">{`$${payload[0].value}`}</span>
-                 </div>
-                 <div className={styles.arrowDown}></div>
-             </div>
-          );
+            const formatedValue = formatNumber(payload[0].value)
+            return (
+                <div className={styles.wrapper}>
+                    <div className={styles.tooltip}>
+                        <span className="label">{`$${formatedValue}`}</span>
+                    </div>
+                </div>
+            );
         }
 
         return null;

@@ -6,7 +6,6 @@ import {Favorite} from '../../Favorite'
 import styles from './styles.module.scss'
 
 export function StockCard({data}) {
-    console.log('stock card', data)
 
     const isPositiveChange = data.isPositive;
     const formatedPercent = formatNumber(data.changePercent)
@@ -16,7 +15,7 @@ export function StockCard({data}) {
         <div className={styles.wrapper}>
             <div className={styles.card}>
                 <Favorite data={data}/>
-                <img src={data.url} alt="Twitter" className={styles.stockLogo}/>
+                <img src={`https://storage.googleapis.com/iexcloud-hl37opg/api/logos/${data.symbol}.png`} alt="Twitter" className={styles.stockLogo}/>
                 <div className={styles.stockNameContainer}>
                     <span className={styles.stockLabel}>{data ? data.symbol : "--"}</span>
                     <span>{data ? formatedName : "--"}</span>

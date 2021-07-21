@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { useDispatch } from 'react-redux';
 import { addFavorite } from '../../redux/actions/calls';
+
+import { CustomTooltip } from '../Tooltip';
 
 import styles from './styles.module.scss'
 
@@ -10,6 +12,7 @@ import styles from './styles.module.scss'
 
 export function Favorite({data}) {
     const dispatch = useDispatch();
+    const [randomID, setRandomID] = useState(String(Math.round(Math.random())))
 
     function setFavorite(data) {
         dispatch(addFavorite(data))
@@ -17,13 +20,11 @@ export function Favorite({data}) {
 
     return (
         <>
-            <div className={styles.wrapper} data-tip >
-                <img src="/icons/star.svg" alt="star icon"className={styles.favorite} onClick={() => setFavorite(data)}/>
-            </div>
-            <ReactTooltip place="top" type="dark" effect="solid" className={styles.tooltip}>
-                Adicionar aos favoritos!
-            </ReactTooltip>
+            <CustomTooltip title="Adicionar aos favoritos" >
+                <div className={styles.wrapper} data-for={randomID} >
+                    <img src="/icons/star.svg" alt="star icon"className={styles.favorite} onClick={() => setFavorite(data)}/>
+                </div>
+            </CustomTooltip>
         </>
-        
     );
 }

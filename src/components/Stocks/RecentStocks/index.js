@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import { StockCard } from '../StockCard';
@@ -7,6 +7,28 @@ import styles from './styles.module.scss'
 
 export function RecentStocks() {
     const recentStocks = useSelector(state => state.recentStocks);
+
+    const listRef = useRef(null);
+
+    const scrollLeft = () => {
+        if (listRef.current) {
+          listRef.current.scrollBy({
+            top: 0,
+            left: 500,
+            behavior: "smooth",
+          });
+        }
+    };
+    
+    const scrollRight = () => {
+    if (listRef.current) {
+        listRef.current.scrollBy({
+        top: 0,
+        left: -500,
+        behavior: "smooth",
+        });
+    }
+    };
         
     return (
         <div className={styles.wrapper}>
@@ -16,30 +38,32 @@ export function RecentStocks() {
                     <h2>Empresas Recentes</h2>
                 </div>
                 <div className={styles.controls}>
-                    <a href="">
-                        <img src="/icons/arrow-left.svg" alt="Arrow Left Icon" />
-                    </a>
-                    <a href="">
-                        <img src="/icons/arrow-right.svg" alt="Arrow Right Icon" />
-                    </a>
+                    <img src="/icons/arrow-left.svg" alt="Arrow Left Icon" onClick={scrollRight}/>
+                    <img src="/icons/arrow-right.svg" alt="Arrow Right Icon" onClick={scrollLeft}/>
                 </div>
                 
             </div>
 
-            <div className={styles.stocks}>
+            <div className={styles.recentContainer}>
+                <div className={styles.itemContainer} ref={listRef}>
+                    {recentStocks.map((stock, index) => {
+                        return (
+                            <div className={styles.tile} key={index}>
+                                    <StockCard data={stock}/>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
+
+            {/* <div className={styles.stocks}>
                 <div className={styles.row}>
                     <div className={styles.row__inner}>
-                        {recentStocks.map((stock) => {
-                            return (
-                                <div className={styles.tile} key={stock.companyName}>
-                                    <StockCard data={stock}/>
-                                </div>
-                            )
-                        })}
+                        
                     </div>
                 </div>
-                
-            </div>
+            </div> */}
         </div>
     );
 }
