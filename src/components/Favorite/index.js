@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import ReactTooltip from 'react-tooltip';
 
 import { useDispatch } from 'react-redux';
-import { addFavorite } from '../../redux/actions/calls';
+import { addFavorite, addFavoriteFromRecent } from '../../redux/actions/calls';
 
 import { CustomTooltip } from '../Tooltip';
 
@@ -10,12 +9,17 @@ import styles from './styles.module.scss'
 
 
 
-export function Favorite({data}) {
+export function Favorite({data, isRecent}) {
     const dispatch = useDispatch();
     const [randomID, setRandomID] = useState(String(Math.round(Math.random())))
 
     function setFavorite(data) {
-        dispatch(addFavorite(data))
+
+        if (isRecent) {
+            dispatch(addFavoriteFromRecent(data))
+        } else {
+            dispatch(addFavorite(data))
+        }
     }
 
     return (

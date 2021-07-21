@@ -29,9 +29,7 @@ export function FavoriteStockCard({data}) {
                     <img src={`${isPositiveChange ? '/icons/graph-up.svg' : '/icons/graph-down.svg'}`} alt="Graphic Up" />
                 </div>
             </div>
-            <a href="#" className={styles.icon} onClick={() => deleteFavorite(data.id)}>
-                <img src="/icons/trash.svg" alt="trash icon"/>
-            </a>
+            <img src="/icons/trash.svg" alt="trash icon" className={styles.icon} onClick={() => deleteFavorite(data.id)}/>
         </div>
     );
 }

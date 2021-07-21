@@ -20,49 +20,16 @@
 			justify-content: space-between;
 			align-items: center;
 
+			cursor: pointer;
+
 			width: 36px;
 		}
 	}
 
-	// .stocks {
-	// 	width: 100%;
-
-	// 	.row {
-	// 		overflow-x: scroll;
-	// 		width: 750px;
-
-	// 		scrollbar-width: none; /* Firefox */
-	// 		-ms-overflow-style: none; /* Internet Explorer 10+ */
-
-	// 		.row__inner {
-	// 			transition: 450ms transform;
-	// 			font-size: 0;
-	// 			white-space: nowrap;
-
-	// 			.tile {
-	// 				position: relative;
-	// 				display: inline-block;
-	// 				width: 299px;
-	// 				margin-right: 21px;
-	// 				font-size: 20px;
-	// 				cursor: pointer;
-	// 				transition: 450ms all;
-	// 				transform-origin: center left;
-	// 			}
-	// 		}
-	// 	}
-
-	// 	.row::-webkit-scrollbar {
-	// 		/* WebKit */
-	// 		width: 0;
-	// 		height: 0;
-	// 	}
-	// }
-
 	.recentContainer {
 		display: flex;
 		align-items: center;
-		max-width: 761px;
+		max-width: 1280px;
 		overflow-y: auto;
 
 		margin: auto;
@@ -70,7 +37,8 @@
 		.itemContainer {
 			display: flex;
 			overflow-y: hidden;
-			justify-content: center;
+
+			transition: 450ms all;
 
 			.tile {
 				margin-right: 21px;
@@ -79,5 +47,11 @@
 		.itemContainer::-webkit-scrollbar {
 			display: none;
 		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.recentContainer {
+		max-width: 761px;
 	}
 }

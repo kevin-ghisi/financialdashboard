@@ -23,7 +23,7 @@ export default function Home({  }) {
 	return (
             <div className={styles.wrapper}>
                 <Head>
-				    <title>Dashboard | Monetus</title>
+				    <title>Dashboard</title>
 			    </Head>
                 
                 <div className={styles.title}>

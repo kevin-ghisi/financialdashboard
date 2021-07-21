@@ -14,7 +14,7 @@ export function RecentStocks() {
         if (listRef.current) {
           listRef.current.scrollBy({
             top: 0,
-            left: 500,
+            left: 320,
             behavior: "smooth",
           });
         }
@@ -24,7 +24,7 @@ export function RecentStocks() {
     if (listRef.current) {
         listRef.current.scrollBy({
         top: 0,
-        left: -500,
+        left: -320,
         behavior: "smooth",
         });
     }
@@ -55,15 +55,6 @@ export function RecentStocks() {
                     })}
                 </div>
             </div>
-
-
-            {/* <div className={styles.stocks}>
-                <div className={styles.row}>
-                    <div className={styles.row__inner}>
-                        
-                    </div>
-                </div>
-            </div> */}
         </div>
     );
 }

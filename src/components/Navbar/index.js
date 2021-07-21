@@ -8,12 +8,12 @@ export function Navbar() {
 	return (
 			<>
 				<div className={styles.wrapper}>
-					<a href="#">
-						<img src="/monetus.svg" alt="monetus" />
+					<a href="/">
+						<img src="/monetus.svg" alt="" />
 					</a>
 					
 					
-					<Items image="/icons/icon-home.svg"/>
+					<Items image="/icons/icon-home.svg" url={"/dashboard"} />
 				</div>
 			</>
 		);

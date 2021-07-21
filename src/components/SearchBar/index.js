@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { getStock, getLogo, getChart, addRecent } from '../../redux/actions/calls'
+import { getStock } from '../../redux/actions/calls'
 
 import styles from './styles.module.scss'
 
@@ -17,9 +17,7 @@ export function SearchBar({data}) {
     return (
         <div className={styles.wrapper}>
             <input type="text" name="stock" id="stock" placeholder="Buscar Empresa" onChange={(evt) => setStock(evt.target.value)}/>
-            <a href="#" onClick={() => getData()}>
-                <img src="/icons/search.svg" alt="Search icon" className={styles.icon}/>
-            </a>
+            <img src="/icons/search.svg" alt="Search icon" className={styles.icon} onClick={() => getData()}/>
         </div>
 
     );
