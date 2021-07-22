@@ -29,7 +29,7 @@
 	.recentContainer {
 		display: flex;
 		align-items: center;
-		max-width: 1280px;
+		max-width: 761px;
 		overflow-y: auto;
 
 		margin: auto;
@@ -50,8 +50,8 @@
 	}
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1920px) {
 	.recentContainer {
-		max-width: 761px;
+		max-width: 1280px;
 	}
 }
